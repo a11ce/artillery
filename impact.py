@@ -9,7 +9,13 @@ def applyImpact(shellLoc, field, tankPosJ, tankHealthJ):
     fixTankPos(field, tankPosJ, tankHealthJ)
     
     for i in range(2):
-        tankHealthJ[i] -= max(int((10 -  distance(shellLoc, tankPosJ[i]))),0)
+        impactDistance = distance(shellLoc, tankPosJ[i])
+        if impactDistance <= 5:
+            damage = int((2/impactDistance) * 50)
+        else:
+            damage = 0
+            
+        tankHealthJ[i] -= damage
         
     return field, tankPosJ, tankHealthJ
 
