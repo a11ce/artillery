@@ -1,5 +1,5 @@
 import shutil, sys 
-import fieldGen, graphics, physics
+import fieldGen, graphics, physics, ai
 from getch import getch
 
 termSize = shutil.get_terminal_size((80,40)) #defaults
@@ -10,9 +10,10 @@ def main():
     playAgain = True
 
     while playAgain:
-        playAgain = playGame()
+        
+        playAgain = playGame( (ai.random45,ai.random45))
 
-def playGame():
+def playGame(moveTypeJ):
 
     tankPosJ, field = fieldGen.generateField(SCREEN_WIDTH,SCREEN_HEIGHT)
 
@@ -30,7 +31,7 @@ def playGame():
             
             return askToPlayAgain(getch)
         #print("\n\n\nEEEE\n\n\n")
-        tankPosJ, tankHealthJ, field = playerMoves(tankPosJ, tankHealthJ, field)
+        tankPosJ, tankHealthJ, field = playerMoves(moveTypeJ,tankPosJ, tankHealthJ, field)
 
 def askToPlayAgain(getch):
     while(True):
@@ -52,11 +53,11 @@ def checkDead(tankHealthJ):
         return True, "Player 1"
     return False, "A ghost"
 
-def playerMoves(tankPosJ, tankHealthJ, field):
+def playerMoves(getJ, tankPosJ, tankHealthJ, field):
     print("Player 1 health is " + str(tankHealthJ[0]))
     print("Player 2 health is " + str(tankHealthJ[1]))
     print()
-    movesJ = [askMove("Player 1", False), askMove("Player 2", True)]
+    movesJ = [getJ[0]("Player 1", False), getJ[1]("Player 2", True)]
     tankPosJ, tankHealthJ, field = physics.moves(tankPosJ, tankHealthJ, movesJ, field)
 
     return tankPosJ, tankHealthJ, field
@@ -74,6 +75,6 @@ def askMove(pName, facingLeft):
     if facingLeft:
         angle = 180 - angle
     return (power, angle)
-    
+
 if __name__ == "__main__":
     main()
