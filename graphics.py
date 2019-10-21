@@ -52,5 +52,5 @@ def drawField(tankPosJ, field, shellLoc = ((0,0),(0,0)) ):
                     else:
                         printString += " "
                     curCol = SKY
-        printString += "\n"
+        printString += "\n" + RESET
     print(printString, end = "")
