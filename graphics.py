@@ -17,20 +17,40 @@ def drawField(tankPosJ, field, shellLoc = ((0,0),(0,0)) ):
     fieldHeight = len(field[0])
 
     printString = ""
+
+    curCol = None
     
     for y in reversed(range(fieldHeight)):
         for x in range(fieldWidth):
             
             if( (x,y) == tankPosJ[0] ):
-                printString += TANK1 + RESET
+                if curCol != TANK1:
+                    printString += TANK1
+                else:
+                    printString += " "
+                curCol = TANK1
+                
             elif( (x,y) == tankPosJ[1]):
-                printString += TANK2 + RESET
+                if curCol != TANK2:
+                    printString += TANK2
+                else:
+                    printString += " "
+                curCol = TANK2               
             else:
                 if(field[x][y] == 1):
-                    printString += GROUND + RESET
+                    if curCol != GROUND:
+                        printString += GROUND
+                    else:
+                        printString += " "
+                    curCol = GROUND
                 elif((x,y) == shellLoc[0] or (x,y) == shellLoc[1] ):
-                    printString += "X" 
+                    curCol = None
+                    printString += RESET + "X"
                 else:
-                    printString += SKY + RESET
+                    if curCol != SKY:
+                        printString+= SKY
+                    else:
+                        printString += " "
+                    curCol = SKY
         printString += "\n"
     print(printString, end = "")
