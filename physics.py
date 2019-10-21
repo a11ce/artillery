@@ -35,7 +35,7 @@ def moves(tankPosJ, tankHealthJ, movesJ, field):
             if not movesImpacted[i]:
                 if impacted(shellLocJ[i], field):
                     field, tankPosJ, tankHealthJ = impact.applyImpact(shellLocJ[i], field, tankPosJ, tankHealthJ)
-                    print(tankPosJ)
+                    #print(tankPosJ)
                     movesImpacted[i] = True
                     
         shellLocJint = ( tuple((  tuple((int(x) for  x in  shellLoc )) for shellLoc in shellLocJ  )))
@@ -62,7 +62,7 @@ def impacted(shellLoc, field):
         return False
     try:
         if(field[int(shellLoc[0])][int(shellLoc[1])] == 1):
-            print("Impact at " + str(shellLoc))
+            #print("Impact at " + str(shellLoc))
             return True
     except:
         print("Shell out of bounds")

@@ -26,8 +26,8 @@ def fixTankPos(field, tankPosJ, tankHealthJ):
        
         try:
             while field[tank[0]][tank[1]-1] == 0:
-                print(field[tank[0]][tank[1]])
-                print(tank)
+                #print(field[tank[0]][tank[1]])
+                #print(tank)
                 tank = (tank[0], tank[1]-1)
             tankPosJ[i] = tank
         except:
