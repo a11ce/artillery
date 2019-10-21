@@ -37,7 +37,7 @@ def fixTankPos(field, tankPosJ, tankHealthJ):
     return tankPosJ, tankHealthJ
 
 def toBeRemoved(shellLoc, groundLoc):
-    if distance(shellLoc, groundLoc) < 4.5:
+    if distance(shellLoc, groundLoc) <= 5:
         return True
     return False
 
