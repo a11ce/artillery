@@ -1,4 +1,4 @@
-from random import randint
+import random
 
 def generateField(width, height):
 
@@ -6,13 +6,15 @@ def generateField(width, height):
             [ 0 for _ in range(height)]
             for _ in range (width)]
 
-    elevation = randint(int(height/10), int(height/2))
+    elevation = random.randint(int(height/10), int(height/2))
     
     tankPosJ = [[0,0],[0,0]]
 
 
     for x in range(width):
-        
+
+        if elevation >=height:
+            elevation = height -1
         for y in range(elevation):
             field[x][y] = 1
 
@@ -25,7 +27,7 @@ def generateField(width, height):
         elif(elevation < height/20):
             elevation += 1
         else:
-           elevation += randint(-1, 1)
+           elevation += random.randint(-2,2)
                     
         
     return tankPosJ, field 
