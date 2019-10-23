@@ -9,9 +9,20 @@ SCREEN_HEIGHT = termSize[1] - 4
 def main():
     playAgain = True
 
+    possiblePlayers = [("Human",askMove),
+                       ("randomNormal (AI)", ai.randomNormal),
+                       ("random45 (AI)", ai.randomNormal),
+                       ("peaceBot (AI)", ai.peaceBot)
+                      ]
+
+    print("Select two players:\n")
+    for idx, posPlayer in enumerate(possiblePlayers):
+        print(str(idx+1) + ": " + posPlayer[0])
+    players = [ possiblePlayers[int(input("\n> "))-1][1] for _ in range(2)]
+    
     while playAgain:
         
-        playAgain = playGame( (ai.random45,ai.random45))
+        playAgain = playGame(players)
 
 def playGame(moveTypeJ):
 
