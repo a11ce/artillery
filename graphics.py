@@ -5,7 +5,7 @@ TANK1  = "\033[45m "
 TANK2  = "\033[46m "
 
 def renderAll(tankPosJ, field, tankHealthJ):
-    clearScreen()
+    #clearScreen()
     drawField(tankPosJ, field)
     #rawHud(tankHealthJ)
     
