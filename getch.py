@@ -1,4 +1,4 @@
-# from 
+# from
 # https://code.activestate.com/recipes/134892-getch-like-unbuffered-character-reading-from-stdin/
 class _Getch:
     """Gets a single character from standard input.  Does not echo to the
@@ -9,7 +9,8 @@ screen."""
         except ImportError:
             self.impl = _GetchUnix()
 
-    def __call__(self): return self.impl()
+    def __call__(self):
+        return self.impl()
 
 
 class _GetchUnix:
