@@ -1,6 +1,6 @@
 # artillery
 
-> A zero-, one- or two-player artillery game with AI support.
+> A zero-, one-, or two-player artillery game with AI support.
 
 ## Setup
 
